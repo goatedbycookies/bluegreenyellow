@@ -1,0 +1,70 @@
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+local Window = OrionLib:MakeWindow({Name = "KeySystem", HidePremium = false, SaveConfig = true, IntroEnabled = false})
+
+OrionLib:MakeNotification({
+	Name = "Success!",
+	Content = "Logged in as a player!",
+	Image = "rbxassetid://4483345998",
+	Time = 5
+})
+
+
+
+local Tab = Window:MakeTab({
+	Name = "Key",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+_G.Key = "hello"
+_G.KeyInput = "string"
+
+function MakeScriptHub()
+    local Window = OrionLib:MakeWindow({Name = "PHub", HidePremium = false, SaveConfig = true, IntroEnabled = false})
+end
+function CorrectKeyNotification()
+    OrionLib:MakeNotification({
+        Name = "Success!",
+        Content = "Correct key!",
+        Image = "rbxassetid://375691701",
+        Time = 5
+    })
+    end
+
+    function IncorrectKeyNotification()
+        OrionLib:MakeNotification({
+            Name = "Incorrect!",
+            Content = "Incorrect key!",
+            Image = "rbxassetid://4483345998",
+            Time = 5
+        })
+        end
+
+Tab:AddTextbox({
+	Name = "Enter Key",
+	Default = "Key ex: ouy24GSu45hcuhgv283",
+	TextDisappear = true,
+	Callback = function(Value)
+		_G.KeyInput = Value
+        print(KeyInput)
+	end	  
+})
+
+Tab:AddButton({
+	Name = "Check key!",
+	Callback = function()
+      	if _G.KeyInput == _G.Key then
+        MakeScriptHub()
+        CorrectKeyNotification()
+        else IncorrectKeyNotification()
+  	end
+end 
+})
+
+
+--[[
+Name = <string> - The name of the tab.
+Icon = <string> - The icon of the tab.
+PremiumOnly = <bool> - Makes the tab accessible to Sirus Premium users only.
+]]
+local Playering = game.players.localplayer
